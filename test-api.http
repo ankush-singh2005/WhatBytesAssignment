@@ -1,0 +1,132 @@
+# Healthcare Backend API Test File
+# Use this file with REST Client extension in VS Code or similar tools
+
+### Health Check
+GET http://localhost:3000/health
+
+### API Documentation
+GET http://localhost:3000/api
+
+### Register User
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Dr. John Smith",
+  "email": "john.smith@hospital.com",
+  "password": "SecurePass123"
+}
+
+### Login User
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john.smith@hospital.com",
+  "password": "SecurePass123"
+}
+
+### Create Patient (Replace TOKEN with actual JWT token from login)
+POST http://localhost:3000/api/patients
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@email.com",
+  "phone": "+1234567890",
+  "date_of_birth": "1985-03-20",
+  "gender": "female",
+  "address": "456 Oak Avenue, Springfield, IL 62701",
+  "medical_history": "Hypertension, no known drug allergies"
+}
+
+### Get All Patients
+GET http://localhost:3000/api/patients
+Authorization: Bearer TOKEN
+
+### Get Specific Patient
+GET http://localhost:3000/api/patients/1
+Authorization: Bearer TOKEN
+
+### Update Patient
+PUT http://localhost:3000/api/patients/1
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "name": "Jane Doe Updated",
+  "email": "jane.doe.updated@email.com",
+  "phone": "+1234567890",
+  "date_of_birth": "1985-03-20",
+  "gender": "female",
+  "address": "789 Pine Street, Springfield, IL 62701",
+  "medical_history": "Hypertension, diabetes type 2, no known drug allergies"
+}
+
+### Create Doctor
+POST http://localhost:3000/api/doctors
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "name": "Dr. Sarah Wilson",
+  "email": "sarah.wilson@hospital.com",
+  "phone": "+1987654321",
+  "specialization": "Cardiology",
+  "license_number": "MD123456789",
+  "years_of_experience": 15
+}
+
+### Get All Doctors
+GET http://localhost:3000/api/doctors
+Authorization: Bearer TOKEN
+
+### Get Specific Doctor
+GET http://localhost:3000/api/doctors/1
+Authorization: Bearer TOKEN
+
+### Update Doctor
+PUT http://localhost:3000/api/doctors/1
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "name": "Dr. Sarah Wilson Updated",
+  "email": "sarah.wilson.updated@hospital.com",
+  "phone": "+1987654321",
+  "specialization": "Interventional Cardiology",
+  "license_number": "MD123456789",
+  "years_of_experience": 16
+}
+
+### Create Patient-Doctor Mapping
+POST http://localhost:3000/api/mappings
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "patient_id": 1,
+  "doctor_id": 1,
+  "notes": "Regular cardiology consultation for hypertension management"
+}
+
+### Get All Mappings
+GET http://localhost:3000/api/mappings
+Authorization: Bearer TOKEN
+
+### Get Doctors for Specific Patient
+GET http://localhost:3000/api/mappings/1
+Authorization: Bearer TOKEN
+
+### Delete Patient-Doctor Mapping
+DELETE http://localhost:3000/api/mappings/1
+Authorization: Bearer TOKEN
+
+### Delete Patient
+DELETE http://localhost:3000/api/patients/1
+Authorization: Bearer TOKEN
+
+### Delete Doctor
+DELETE http://localhost:3000/api/doctors/1
+Authorization: Bearer TOKEN
