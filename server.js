@@ -97,10 +97,10 @@ const startServer = async () => {
     await initializeDatabase();
     
     app.listen(PORT, () => {
-      console.log(`🚀 Healthcare Backend Server running on port ${PORT}`);
-      console.log(`📋 API Documentation: http://localhost:${PORT}/api`);
-      console.log(`❤️  Health Check: http://localhost:${PORT}/health`);
-      console.log(`🔐 Environment: ${process.env.NODE_ENV}`);
+      console.log(`Healthcare Backend Server running on port ${PORT}`);
+      console.log(`API Documentation: http://localhost:${PORT}/api`);
+      console.log(`Health Check: http://localhost:${PORT}/health`);
+      console.log(`Environment: ${process.env.NODE_ENV}`);
     });
   } catch (error) {
     console.error('Failed to start server:', error);
